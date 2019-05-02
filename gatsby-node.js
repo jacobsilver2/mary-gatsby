@@ -1,7 +1,14 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const { graphqlForProjects } = require("./createPages/create-pages-projects.js");
+const { graphqlForSideNotes }  = require("./createPages/create-pages-sidenotes");
 
-// You can delete this file if you're not using it
+function createIndividualPages(actions, graphql) {
+  const { createPage } = actions;
+  return Promise.all([
+    graphqlForProjects(graphql, createPage),
+    graphqlForSideNotes(graphql, createPage),
+  ]);
+}
+
+exports.createPages = ({ graphql, actions }) => {
+  return createIndividualPages(actions, graphql);
+}
