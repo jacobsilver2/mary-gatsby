@@ -50,7 +50,7 @@ const StyledGridItem = styled.div`
   }
 `;
 
-const GridItem = ({slug, imgData, title}) => {
+const GridItem = ({slug, imgData, title, category}) => {
   const [isHovering, setIsHovering] = useState(false);
   const getSpringProps = () => {
     return {
@@ -79,7 +79,7 @@ const GridItem = ({slug, imgData, title}) => {
       let styleSubtitle = { opacity: motionStyle.opacity, };
         return (
           <StyledGridItem onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-            <Link to={`/work/${slug}`}>
+            <Link to={`/${category}/${slug}`}>
               <div className="container">
                 <div className="subcontainer">
                   <div className="conatainerImage" >

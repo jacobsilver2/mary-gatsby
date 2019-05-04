@@ -3,9 +3,9 @@ import { StaticQuery, graphql, } from 'gatsby';
 import Layout from '../components/layout';
 import GridItem from '../components/GridItem';
 
-const WorkAllPostQuery = graphql`
-query WorkAllPostQuery {
-      allWordpressPost(filter: { categories: { elemMatch: {name: {eq: "project"}}}} sort: { fields: [date], order:ASC }) {
+const AllBlogPostQuery = graphql`
+query AllBlogPostQuery {
+      allWordpressPost(filter: { categories: { elemMatch: {name: {eq: "blog"}}}} sort: { fields: [date], order:ASC }) {
         edges {
           node {
             date(formatString: "DD, MMM YYYY")
@@ -31,9 +31,9 @@ query WorkAllPostQuery {
     }
 `;
 
-const Work = () => (
+const sideNotes = () => (
       <StaticQuery
-        query={WorkAllPostQuery}
+        query={AllBlogPostQuery}
         render={data => (
           <div>
             <Layout>
@@ -43,7 +43,7 @@ const Work = () => (
                   slug={node.slug} 
                   imgData={node.featured_media.localFile.childImageSharp.fluid} 
                   title={node.title} 
-                  category="work"
+                  category="side-notes"
                 />
               ))}
             </Layout>
@@ -51,7 +51,7 @@ const Work = () => (
       )}/>
 );
 
-export default Work;
+export default sideNotes;
 
 
     

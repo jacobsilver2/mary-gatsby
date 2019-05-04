@@ -43,6 +43,18 @@ export const pageQuery = graphql`
             name
         }
         slug
+        featured_media {
+          localFile {
+            childImageSharp {
+              id
+              fixed {
+                srcSet
+                src
+                
+              }
+            }
+          }
+        }
     }
   }
 `;
