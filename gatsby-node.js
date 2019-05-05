@@ -1,6 +1,6 @@
 const { graphqlForProjects } = require("./createPages/create-pages-projects.js");
 const { graphqlForSideNotes }  = require("./createPages/create-pages-sidenotes");
-
+  
 function createIndividualPages(actions, graphql) {
   const { createPage } = actions;
   return Promise.all([
@@ -12,3 +12,4 @@ function createIndividualPages(actions, graphql) {
 exports.createPages = ({ graphql, actions }) => {
   return createIndividualPages(actions, graphql);
 }
+
