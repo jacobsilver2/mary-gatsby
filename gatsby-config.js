@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "maryswebsite.net/public_html",
+        baseUrl: "maryswebsite.net",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
@@ -25,18 +25,18 @@ module.exports = {
         },
         verboseOutput: false,
         concurrentRequests: 10,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
-        ],
-        normalizer: function({ entities }) {
-          return entities
-        },
+        // includedRoutes: [
+        //   "**/categories",
+        //   "**/posts",
+        //   "**/pages",
+        //   "**/media",
+        //   "**/tags",
+        //   "**/taxonomies",
+        //   "**/users",
+        // ],
+        // normalizer: function({ entities }) {
+        //   return entities
+        // },
       },
     },
     `gatsby-plugin-react-helmet`,
