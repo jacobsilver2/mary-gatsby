@@ -15,8 +15,6 @@ module.exports = {
         useACF: true,
         acfOptionPageIds: [],
         auth: {
-          // wpcom_app_clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
-          // wpcom_app_clientId: "54793",
           // wpcom_user: "gatsbyjswpexample@gmail.com",
           // wpcom_pass: process.env.WORDPRESS_PASSWORD,
           // jwt_user: process.env.JWT_USER,
@@ -25,18 +23,18 @@ module.exports = {
         },
         verboseOutput: false,
         concurrentRequests: 10,
-        // includedRoutes: [
-        //   "**/categories",
-        //   "**/posts",
-        //   "**/pages",
-        //   "**/media",
-        //   "**/tags",
-        //   "**/taxonomies",
-        //   "**/users",
-        // ],
-        // normalizer: function({ entities }) {
-        //   return entities
-        // },
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+        ],
+        normalizer: function({ entities }) {
+          return entities
+        },
       },
     },
     `gatsby-plugin-react-helmet`,
