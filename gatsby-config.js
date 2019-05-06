@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "maryswebsite.net",
+        baseUrl: "maryswebsite.net/public_html",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
@@ -24,7 +24,6 @@ module.exports = {
           // jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
         },
         verboseOutput: false,
-        perPage: 100,
         concurrentRequests: 10,
         includedRoutes: [
           "**/categories",
