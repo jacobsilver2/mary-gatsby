@@ -13,28 +13,7 @@ module.exports = {
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
-        acfOptionPageIds: [],
-        auth: {
-          // wpcom_user: "gatsbyjswpexample@gmail.com",
-          // wpcom_pass: process.env.WORDPRESS_PASSWORD,
-          // jwt_user: process.env.JWT_USER,
-          // jwt_pass: process.env.JWT_PASSWORD,
-          // jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
-        },
-        verboseOutput: false,
-        concurrentRequests: 10,
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
-        ],
-        normalizer: function({ entities }) {
-          return entities
-        },
+        concurrentRequests: 100,
       },
     },
     `gatsby-plugin-react-helmet`,
