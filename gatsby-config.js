@@ -5,10 +5,11 @@ module.exports = {
     author: `Jacob Silver`,
   },
   plugins: [
+    'gatsby-plugin-netlify',
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "localhost:8080",
+        baseUrl: "maryswebsite.net",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
@@ -24,10 +25,6 @@ module.exports = {
         },
         verboseOutput: false,
         perPage: 100,
-        searchAndReplaceContentUrls: {
-          sourceUrl: "https://source-url.com",
-          replacementUrl: "https://replacement-url.com",
-        },
         concurrentRequests: 10,
         includedRoutes: [
           "**/categories",
