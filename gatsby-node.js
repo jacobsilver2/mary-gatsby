@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const { graphqlForProjects } = require("./createPages/create-pages-projects.js");
 const { graphqlForSideNotes }  = require("./createPages/create-pages-sidenotes");
   

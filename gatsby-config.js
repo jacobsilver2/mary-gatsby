@@ -22,7 +22,7 @@ module.exports = {
           // jwt_pass: process.env.JWT_PASSWORD,
           // jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
         },
-        verboseOutput: true,
+        verboseOutput: false,
         concurrentRequests: 10,
         includedRoutes: [
           "**/categories",
@@ -35,6 +35,7 @@ module.exports = {
           "**/uploads",
           "**/acf",
           "**/slide",
+          "**/wp-content",
         ],
         normalizer: function({ entities }) {
           return entities
