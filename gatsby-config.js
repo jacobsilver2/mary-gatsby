@@ -10,10 +10,35 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         baseUrl: "maryswebsite.net",
-        protocol: "http",
+        protocol: "https",
         hostingWPCOM: false,
         useACF: true,
-        concurrentRequests: 100,
+        acfOptionPageIds: [],
+        auth: {
+          // wpcom_app_clientId: "54793",
+          // wpcom_user: "gatsbyjswpexample@gmail.com",
+          // wpcom_pass: process.env.WORDPRESS_PASSWORD,
+          // jwt_user: process.env.JWT_USER,
+          // jwt_pass: process.env.JWT_PASSWORD,
+          // jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
+        },
+        verboseOutput: true,
+        concurrentRequests: 10,
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+          "**/uploads",
+          "**/acf",
+          "**/slide",
+        ],
+        normalizer: function({ entities }) {
+          return entities
+        },
       },
     },
     `gatsby-plugin-react-helmet`,
