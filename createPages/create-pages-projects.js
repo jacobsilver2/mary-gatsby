@@ -5,13 +5,17 @@ function createProjectPages(result, createPage) {
   const projectPostTemplate = path.join(__dirname, `../src/templates/project.js`);
   const projectPosts = result.data.projects.edges;
   projectPosts.forEach((edge) => {
-    createPage({
-      path: `/work/${edge.node.slug}`,
-      component: slash(projectPostTemplate),
-      context: {
-        id: edge.node.id,
-      },
-    });
+    try {
+      createPage({
+        path: `/work/${edge.node.slug}`,
+        component: slash(projectPostTemplate),
+        context: {
+          id: edge.node.id,
+        },
+      });
+    } catch (e) {
+      console.error(e)
+    }
   });
 }
 

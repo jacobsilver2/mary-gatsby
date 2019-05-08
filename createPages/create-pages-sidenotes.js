@@ -5,13 +5,17 @@ function createSideNotesPages(result, createPage) {
   const sideNotesPostTemplate = path.join(__dirname, `../src/templates/blog.js`);
   const sideNotesPosts = result.data.sidenotes.edges;
   sideNotesPosts.forEach((edge) => {
-    createPage({
-      path: `/side-notes/${edge.node.slug}`,
-      component: slash(sideNotesPostTemplate),
-      context: {
-        id: edge.node.id,
-      },
-    });
+    try {
+      createPage({
+        path: `/side-notes/${edge.node.slug}`,
+        component: slash(sideNotesPostTemplate),
+        context: {
+          id: edge.node.id,
+        },
+      });
+    } catch (e) {
+      console.error(e)
+    }
   });
 }
 
