@@ -42,7 +42,7 @@ const Work = () => (
                 <GridItem 
                   key={node.id} 
                   slug={node.slug} 
-                  imgData={!!node.featured_media.localFile.childImageSharp ? node.featured_media.localFile.childImageSharp.fluid : null} 
+                  imgData={typeof node.featured_media.localFile.childImageSharp !== 'undefined' ? node.featured_media.localFile.childImageSharp.fluid : null} 
                   publicURL={node.featured_media.localFile.publicURL}
                   title={node.title} 
                   category="work"
