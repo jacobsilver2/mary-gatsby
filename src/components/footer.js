@@ -26,6 +26,9 @@ query BlogAllPostQueryFooter {
             id
             title
             slug
+            categories {
+              name
+            }
             featured_media {
               localFile {
                 childImageSharp {
@@ -60,7 +63,13 @@ const Footer = () => (
           <p>More Work</p>
           <Container>
             {fourItems.map(({ node }) => (
-              <GridItem key={node.id} slug={node.slug} imgData={node.featured_media.localFile.childImageSharp.fixed} title={node.title} />
+              <GridItem 
+                key={node.id} 
+                slug={node.slug} 
+                imgData={!!node.featured_media.localFile.childImageSharp ? node.featured_media.localFile.childImageSharp.fluid : null} 
+                publicURL={node.featured_media.localFile.publicURL}
+                category={node.categories.name}
+                title={node.title} />
             ))}
           </Container>
         </StyledFooter>
