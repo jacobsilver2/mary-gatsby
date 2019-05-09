@@ -69,7 +69,8 @@ const Footer = () => (
                 imgData={!!node.featured_media.localFile.childImageSharp ? node.featured_media.localFile.childImageSharp.fluid : null} 
                 publicURL={node.featured_media.localFile.publicURL}
                 category={node.categories.name}
-                title={node.title} />
+                title={node.title} 
+              />
             ))}
           </Container>
         </StyledFooter>

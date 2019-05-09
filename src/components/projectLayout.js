@@ -110,7 +110,7 @@ const ProjectLayout = ({ children }) => (
         <PageContainer>
           {children}
         </PageContainer>
-        <Footer />
+        {/* <Footer /> */}
       </>
     )}
   />
