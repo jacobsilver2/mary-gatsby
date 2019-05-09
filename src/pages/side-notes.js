@@ -14,6 +14,7 @@ query AllBlogPostQuery {
             slug
             featured_media {
               localFile {
+                publicURL
                 childImageSharp {
                   id
                   fluid (maxWidth: 700) {
@@ -41,7 +42,8 @@ const sideNotes = () => (
                 <GridItem 
                   key={node.id} 
                   slug={node.slug} 
-                  imgData={node.featured_media.localFile.childImageSharp.fluid} 
+                  imgData={!!node.featured_media.localFile.childImageSharp ? node.featured_media.localFile.childImageSharp.fluid : null} 
+                  publicURL={node.featured_media.localFile.publicURL}
                   title={node.title} 
                   category="side-notes"
                 />

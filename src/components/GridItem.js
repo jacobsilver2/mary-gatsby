@@ -50,7 +50,7 @@ const StyledGridItem = styled.div`
   }
 `;
 
-const GridItem = ({slug, imgData, title, category}) => {
+const GridItem = ({slug, imgData, title, category, publicURL}) => {
   const [isHovering, setIsHovering] = useState(false);
   const getSpringProps = () => {
     return {
@@ -83,11 +83,10 @@ const GridItem = ({slug, imgData, title, category}) => {
               <div className="container">
                 <div className="subcontainer">
                   <div className="conatainerImage" >
-                    <Img 
-                      fluid={imgData}
-                      alt={title}
-                      style={styleImage}
-                    />
+                  {!!imgData
+                    ? <Img fluid={imgData} alt={title} style={styleImage}/>
+                    : <img src={publicURL} alt={title} />
+                  }
                   </div>
                   <div className="overlay" >
                     <div className="title" style={styleSubtitle}>

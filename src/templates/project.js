@@ -45,12 +45,12 @@ export const pageQuery = graphql`
         slug
         featured_media {
           localFile {
+            publicURL
             childImageSharp {
               id
               fixed {
                 srcSet
                 src
-                
               }
             }
           }
