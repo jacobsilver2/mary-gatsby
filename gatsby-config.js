@@ -45,7 +45,7 @@ module.exports = {
           // jwt_base_path: "/jwt-auth/v1/token", // Default - can skip if you are using https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
         },
         verboseOutput: false,
-        concurrentRequests: 10,
+        concurrentRequests: 1,
         includedRoutes: [
           "**/categories",
           "**/posts",
