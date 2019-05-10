@@ -58,6 +58,10 @@ module.exports = {
           "**/slide",
           "**/wp-content",
         ],
+        searchAndReplaceContentUrls: {
+          sourceUrl: "https://www.maryswebsite.net",
+          replacementUrl: "https://vigilant-haibt-7f8dd5.netlify.com",
+        },
         normalizer: function({ entities }) {
           return entities
         },

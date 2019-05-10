@@ -41,7 +41,7 @@ const Work = () => (
               {data.allWordpressPost.edges.map(({ node }) => {
                 let imageData = null;
                 if (node.featured_media.localFile.childImageSharp !== null ) {
-                  imageData = node.featured_media.localFile.childImageShar.fluid
+                  imageData = node.featured_media.localFile.childImageSharp.fluid
                 }
                 return (
                 <GridItem 
