@@ -1,12 +1,12 @@
 const { graphqlForProjects } = require("./createPages/create-pages-projects.js");
 const { graphqlForSideNotes }  = require("./createPages/create-pages-sidenotes");
   
-function createIndividualPages(actions, graphql) {
+async function createIndividualPages(actions, graphql) {
   const { createPage } = actions;
-  return Promise.all([
-    graphqlForProjects(graphql, createPage),
-    graphqlForSideNotes(graphql, createPage),
-  ]);
+  const promises = [graphqlForProjects(graphql, createPage), graphqlForSideNotes(graphql, createPage)];
+  const results = await Promise.all(promises.map(p => p.catch(e => e)));
+  const validResults = results.filter(result => !(result instanceof Error));
+  return validResults;
 }
 
 exports.createPages = ({ graphql, actions }) => {
