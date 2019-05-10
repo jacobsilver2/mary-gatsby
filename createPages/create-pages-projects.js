@@ -1,5 +1,15 @@
 const path = require('path');
 const slash = require('slash');
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+
+exports.serialMap = async (items, fn) => {
+  const results = []
+  for (const item of items) {
+    const result = await fn(item)
+    results.push(result)
+  }
+  return results
+}
 
 function createProjectPages(result, createPage) {
   const projectPostTemplate = path.join(__dirname, `../src/templates/project.js`);
@@ -21,12 +31,26 @@ function graphqlForProjects(graphql, createPage) {
     projects: allWordpressPost (filter: { categories: { elemMatch: {name: {eq: "project"}}}}) {
       edges {
         node {
-          id
           title
-          content
           slug
+          date(formatString: "DD, MMM YYYY")
+          content
+          excerpt
           categories {
-            name
+              id
+              name
+          }
+          featured_media {
+            localFile {
+              publicURL
+              childImageSharp {
+                id
+                fixed {
+                  srcSet
+                  src
+                }
+              }
+            }
           }
         }
       }
