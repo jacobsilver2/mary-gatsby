@@ -24,6 +24,7 @@ function graphqlForSideNotes(graphql, createPage) {
           title
           content
           excerpt
+          id
           date(formatString: "DD, MMM YYYY")
           categories {
               id
