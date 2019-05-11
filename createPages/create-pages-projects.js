@@ -1,15 +1,7 @@
 const path = require('path');
 const slash = require('slash');
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
 
-exports.serialMap = async (items, fn) => {
-  const results = []
-  for (const item of items) {
-    const result = await fn(item)
-    results.push(result)
-  }
-  return results
-}
+
 
 function createProjectPages(result, createPage) {
   const projectPostTemplate = path.join(__dirname, `../src/templates/project.js`);
@@ -33,6 +25,7 @@ function graphqlForProjects(graphql, createPage) {
         node {
           title
           slug
+          id
           date(formatString: "DD, MMM YYYY")
           content
           excerpt
