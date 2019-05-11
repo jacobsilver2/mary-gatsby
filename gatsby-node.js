@@ -9,7 +9,12 @@ async function createIndividualPages(actions, graphql) {
   return validResults;
 }
 
-exports.createPages = ({ graphql, actions }) => {
+// exports.createPages = async ({ graphql, actions }) => {
+//   await graphqlForProjects(graphql, actions.createPage);
+//   await graphqlForSideNotes(graphql, actions.createPage)
+// }
+
+exports.createPages =  ({ graphql, actions }) => {
   return createIndividualPages(actions, graphql);
 }
 
