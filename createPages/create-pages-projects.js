@@ -23,9 +23,9 @@ function graphqlForProjects(graphql, createPage) {
     projects: allWordpressPost (filter: { categories: { elemMatch: {name: {eq: "project"}}}}) {
       edges {
         node {
+          id
           title
           slug
-          id
           date(formatString: "DD, MMM YYYY")
           content
           excerpt

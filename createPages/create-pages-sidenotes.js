@@ -21,10 +21,10 @@ function graphqlForSideNotes(graphql, createPage) {
     sidenotes: allWordpressPost (filter: { categories: { elemMatch: {name: {eq: "blog"}}}}) {
       edges {
         node {
+          id
           title
           content
           excerpt
-          id
           date(formatString: "DD, MMM YYYY")
           categories {
               id
