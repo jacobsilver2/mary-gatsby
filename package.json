@@ -5,8 +5,11 @@
   "version": "0.1.0",
   "author": "Jacob Silver",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.1.1",
     "@sendgrid/mail": "^6.4.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "cluster": "^0.7.7",
+    "dotenv": "^8.0.0",
     "fs": "0.0.1-security",
     "gatsby": "^2.13.51",
     "gatsby-image": "^2.2.8",
@@ -30,7 +33,9 @@
     "react-dom": "^16.8.6",
     "react-formio": "^3.1.12",
     "react-helmet": "^5.2.1",
+    "react-modal": "^3.9.1",
     "react-motion": "^0.5.2",
+    "react-responsive-modal": "^4.0.1",
     "styled-components": "^4.3.2",
     "tls": "0.0.1"
   },
