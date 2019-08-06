@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import styled from 'styled-components';
 
-const GridContainer = styled.div`
+export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 10px;
