@@ -429,7 +429,7 @@ exports.mapEntitiesToMedia = entities => {
 exports.downloadMediaFiles =
 /*#__PURE__*/
  function () {
-  var _ref = (0, _asyncToGenerator2.default)(function* ({
+  var _ref = (0, _asyncToGenerator2.default)(async function ({
     entities,
     store,
     cache,
@@ -439,7 +439,7 @@ exports.downloadMediaFiles =
     getNode,
     _auth
   }) {
-    return Promise.all(entities.map(
+    await Promise.all(entities.map(
     /*#__PURE__*/
     function () {
       var _ref2 = (0, _asyncToGenerator2.default)(async function (e) {

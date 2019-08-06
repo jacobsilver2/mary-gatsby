@@ -38,21 +38,16 @@ const Work = () => (
         render={data => (
           <div>
             <Layout>
-              {data.allWordpressPost.edges.map(({ node }) => {
-                let imageData = null;
-                if (node.featured_media.localFile.childImageSharp !== null ) {
-                  imageData = node.featured_media.localFile.childImageSharp.fluid
-                }
-                return (
+              {data.allWordpressPost.edges.map(({ node }) => (
                 <GridItem 
                   key={node.id} 
                   slug={node.slug} 
-                  imgData={imageData} 
+                  imgData={node.featured_media.localFile.childImageSharp.fluid} 
                   publicURL={node.featured_media.localFile.publicURL}
                   title={node.title} 
                   category="work"
                 />
-              )})}
+              ))}
             </Layout>
           </div>
       )}/>

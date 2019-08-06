@@ -58,6 +58,15 @@ module.exports = {
           return entities
         },
       },
+      plugins: [
+        {
+          resolve: `gatsby-wordpress-inline-images`,
+          options: {
+            baseUrl: `https://www.maryswebsite.net`,
+            protocol: `https`
+          }
+        }
+      ],
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
