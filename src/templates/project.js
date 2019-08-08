@@ -4,6 +4,62 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/projectLayout"
 import Modal from "react-modal"
+import styled, {createGlobalStyle} from 'styled-components';
+
+
+
+function ReactModalAdapter ({ className, ...props }) {
+  const contentClassName = `${className}__content`;
+  const overlayClassName = `${className}__overlay`;
+  return (
+    <Modal
+      portalClassName={className}
+      className={contentClassName}
+      overlayClassName={overlayClassName}
+      htmlOpenClassName='ReactModal__Html--open'
+      {...props}
+    />
+  )
+}
+
+const StyledModal = styled(ReactModalAdapter)`
+  
+  &__overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(128, 128, 128, 0.99);
+  }
+
+  &__content {
+    font-family: 'fertigo-pro', serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    borderRadius: 4px;
+    outline: none;
+    padding: 20px;
+    &.ReactModal__Body--open {
+      position: static;
+      overflow-y: scroll;
+    }
+
+    &.ReactModal__Html--open {
+      overflow-y: hidden;
+    }
+  }
+
+`;
 
 const passWordProtectedSlugs = [
   "moody-gardens-aquarium",
@@ -12,7 +68,6 @@ const passWordProtectedSlugs = [
 ]
 
 const PostTemplate = props => {
-  console.log(props)
   const {
     data: { wordpressPost: post },
   } = props
@@ -21,17 +76,9 @@ const PostTemplate = props => {
   )
   const [password, setPassword] = useState("")
 
-  // function onOpenModal() {
-  //   setModalIsOpen(true)
-  // }
   function onCloseModal() {
     setModalIsOpen(false)
   }
-  // function handleSubmit(e) {
-  //   if (password === 'mary') {
-  //     onCloseModal()
-  //   }
-  // }
 
   return (
     <Layout>
@@ -41,17 +88,18 @@ const PostTemplate = props => {
       />
       <section dangerouslySetInnerHTML={{ __html: post.content }} />
       {password !== "mary" && (
-        <Modal
+        <StyledModal
           isOpen={modalIsOpen}
           onRequestClose={onCloseModal}
           shouldCloseOnOverlayClick={false}
           shouldCloseOnEsc={false}
+          htmlOpenClassName='ReactModal__Html--open'
         >
           <p>
             This page is password protected. Please enter the password below to
             veiw the content.
           </p>
-          <form>
+          <form style={{textAlign: 'center'}}>
             <input
               type="password"
               name="password"
@@ -59,7 +107,7 @@ const PostTemplate = props => {
               onChange={e => setPassword(e.target.value)}
             />
           </form>
-        </Modal>
+        </StyledModal>
       )}
     </Layout>
   )
