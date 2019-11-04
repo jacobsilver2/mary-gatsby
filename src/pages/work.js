@@ -15,6 +15,9 @@ export const WorkAllPostQuery = graphql`
           title
           id
           slug
+          tags {
+            name
+          }
           featured_media {
             localFile {
               publicURL
@@ -51,6 +54,7 @@ const Work = ({ data }) => (
               publicURL={node.featured_media.localFile.publicURL}
               title={node.title}
               category="work"
+              tag={node.tags ? node.tags[0].name : null}
             />
           )
         })}

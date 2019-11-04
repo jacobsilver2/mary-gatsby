@@ -2,10 +2,11 @@
 
 const { graphqlForProjects } = require("./createPages/create-pages-projects.js");
 const { graphqlForSideNotes }  = require("./createPages/create-pages-sidenotes");
+const { graphqlForProtected } = require("./createPages/create-pages-protected");
   
 async function createIndividualPages(actions, graphql) {
   const { createPage } = actions;
-  const promises = [graphqlForProjects(graphql, createPage), graphqlForSideNotes(graphql, createPage)];
+  const promises = [graphqlForProjects(graphql, createPage), graphqlForSideNotes(graphql, createPage), graphqlForProtected(graphql, createPage)];
   const results = await Promise.all(promises.map(p => p.catch(e => e)));
   const validResults = results.filter(result => !(result instanceof Error));
   return validResults;
@@ -17,28 +18,10 @@ exports.createPages =  ({ graphql, actions }) => {
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
-  if (page.path.match(/^\/work\/moody-gardens-aquarium/)) {
-    page.matchPath = "/work/moody-gardens-aquarium"
+  if (page.path.match(/^\/work\/private/)) {
+    page.matchPath = "/work/private/*"
     createPage(page)
   }
 }
 
-
-
-
-
-// // Implement the Gatsby API “onCreatePage”. This is
-// // called after every page is created.
-// exports.onCreatePage = async ({ page, actions }) => {
-//   const { createPage } = actions
-
-//   // page.matchPath is a special key that's used for matching pages
-//   // only on the client.
-//   if (page.path.match(/^\/account/)) {
-//     page.matchPath = "/account/*"
-
-//     // Update the page.
-//     createPage(page)
-//   }
-// }
 

@@ -50,7 +50,7 @@ const StyledGridItem = styled.div`
   }
 `;
 
-const GridItem = ({slug, imgData, title, category, publicURL}) => {
+const GridItem = ({slug, imgData, title, category, publicURL, tag}) => {
   const [isHovering, setIsHovering] = useState(false);
   const getSpringProps = () => {
     return {
@@ -77,9 +77,10 @@ const GridItem = ({slug, imgData, title, category, publicURL}) => {
         opacity: motionStyle.imageOpacity, 
       };
       let styleSubtitle = { opacity: motionStyle.opacity, };
+      const urlString = tag === 'protected' ? `/${category}/private/${slug}` : `/${category}/${slug}`
         return (
           <StyledGridItem onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-            <Link to={`/${category}/${slug}`}>
+            <Link to={urlString}>
               <div className="container">
                 <div className="subcontainer">
                   <div className="conatainerImage" >

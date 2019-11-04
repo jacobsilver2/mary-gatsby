@@ -3,13 +3,13 @@ const slash = require('slash');
 
 
 
-function createProjectPages(result, createPage) {
-  const projectPostTemplate = path.join(__dirname, `../src/templates/project.js`);
-  const projectPosts = result.data.projects.edges;
-  projectPosts.forEach((edge) => {
+function createProtectedPages(result, createPage) {
+  const protectedPostTemplate = path.join(__dirname, `../src/templates/protected.js`);
+  const protectedPosts = result.data.projects.edges;
+  protectedPosts.forEach((edge) => {
     createPage({
-      path: `/work/${edge.node.slug}`,
-      component: slash(projectPostTemplate),
+      path: `/work/private/${edge.node.slug}`,
+      component: slash(protectedPostTemplate),
       context: {
         id: edge.node.id,
       },
@@ -17,10 +17,10 @@ function createProjectPages(result, createPage) {
   });
 }
 
-function graphqlForProjects(graphql, createPage) {
+function graphqlForProtected(graphql, createPage) {
   return graphql(`
   {
-    projects: allWordpressPost (filter: {categories: {elemMatch: {name: {eq: "project"}}}, tags: {elemMatch: {name: {ne: "protected"}}}}) {
+    projects: allWordpressPost (filter: {categories: {elemMatch: {name: {eq: "project"}}}, tags: {elemMatch: {name: {eq: "protected"}}}}) {
       edges {
         node {
           id
@@ -53,8 +53,8 @@ function graphqlForProjects(graphql, createPage) {
     if (result.errors) {
       throw result.errors;
     }
-    createProjectPages(result, createPage)
+    createProtectedPages(result, createPage)
   });
 }
 
-exports.graphqlForProjects = graphqlForProjects;
+exports.graphqlForProtected = graphqlForProtected;

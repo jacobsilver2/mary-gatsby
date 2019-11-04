@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 import PropType from "prop-types"
+import { Router } from "@reach/router"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/projectLayout"
 import Modal from "react-modal"
 import styled, {createGlobalStyle} from 'styled-components';
+import Login from "../components/login"
+import PrivateRoute from '../components/privateRoute';
+import Profile from "../components/profile"
 
 
 
@@ -86,6 +90,11 @@ const PostTemplate = props => {
         title={post.title}
         meta={[{ name: "description", content: post.excerpt }]}
       />
+      <div>THIS WILL BE A PASSWORD PROTECTED PAGE</div>
+      {/* <Router>
+        <Login path="/login"/>
+        <PrivateRoute path="/app/profile" component={Profile} />
+      </Router> */}
       <section dangerouslySetInnerHTML={{ __html: post.content }} />
       {/* {password !== "mary" && (
         <StyledModal
@@ -107,8 +116,8 @@ const PostTemplate = props => {
               onChange={e => setPassword(e.target.value)}
             />
           </form>
-        </StyledModal>
-      )} */}
+        </StyledModal> */}
+      )}
     </Layout>
   )
 }

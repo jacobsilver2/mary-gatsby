@@ -26,8 +26,8 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-netlify',
-    'gatsby-plugin-netlify-cache',
+    "gatsby-plugin-netlify",
+    "gatsby-plugin-netlify-cache",
     {
       resolve: "gatsby-source-wordpress",
       options: {
@@ -63,9 +63,9 @@ module.exports = {
           resolve: `gatsby-wordpress-inline-images`,
           options: {
             baseUrl: `https://www.maryswebsite.net`,
-            protocol: `https`
-          }
-        }
+            protocol: `https`,
+          },
+        },
       ],
     },
     `gatsby-plugin-react-helmet`,
@@ -74,9 +74,9 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /assets/ // See below to configure properly
-        }
-      }
+          include: /assets/, // See below to configure properly
+        },
+      },
     },
     // `gatsby-plugin-offline`,
   ],
